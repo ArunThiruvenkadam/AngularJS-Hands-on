@@ -1,0 +1,52 @@
+<form class="form" role="form" name="profileForm"
+      data-ng-submit="profile.validateProfile();">
+    <div class="col-md-5">
+        <div class="form-group">
+            <input type="text" invalid-message="{{profile.strings.name_required}}"
+                   data-ng-model="profile.profile.name"
+                   class="form-control form-control-inline" id="name" data-ng-maxlength=255 required
+                   placeholder="{{profile.strings.name}}">
+        </div>
+        <div class="form-group">
+            <input type="number" invalid-message="{{profile.strings.age_required}}"
+                   data-ng-model="profile.profile.age"
+                   class="form-control form-control-inline" id="name" data-ng-min=20 data-ng-max=40 data-ng-maxlength=2 required
+                   placeholder="{{profile.strings.age}}">
+        </div>
+        <div class="form-group">
+            <input type="tel" invalid-message="{{profile.strings.phone_required}}"
+                   data-ng-model="profile.profile.phone"
+                   class="form-control form-control-inline" id="phone" data-ng-maxlength=10 required
+                   placeholder="{{profile.strings.phone}}">
+        </div>
+        <div class="form-group">
+            <input type="email" invalid-message="{{profile.strings.email_required}}"
+                   data-ng-model="profile.profile.email"
+                   class="form-control form-control-inline" id="email" data-ng-maxlength=255 required
+                   placeholder="{{profile.strings.email}}">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control"
+                      invalid-message="{{profile.strings.address_required}}"
+                      data-ng-model="profile.profile.address"
+                      placeholder="{{profile.strings.address}}"
+                      rows="5" id="address" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <input type="file" id="profileImage"
+                       placeholder="{{profile.strings.image}}"
+                       fileread="profile.profile.image">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col-sm-5">
+            <button type="submit" class="btn">Save</button>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <image data-ng-src="{{profile.profile.image}}" height="144" width="144"/>
+    </div>
+</form>

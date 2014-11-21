@@ -1,0 +1,38 @@
+
+<div class="contain">
+	<div class="row" data-ng-controller="menuController as menuCtrl">
+		<div class="col-md-2" id="feedmenu">
+			<ul class="nav nav-pills nav-stacked" role="tablist" data-ng-repeat="menu in menuCtrl.menu">
+			<li id="menu{{$index}}" role="presentation" data-ng-class="{active: menuCtrl.activeMenu == menu.name}" 
+				data-ng-click="menuCtrl.activeMenu = menu.name"><a href>{{menu.name}}</a></li>
+			</ul>
+		</div>
+		<div class="col-md-10">
+			<div data-ng-show="menuCtrl.activeMenu === 'Feed'" data-ng-controller="feedController as feed">
+				<div class="text-center">
+					<form class="form-inline" role="form" name="loginForm" 
+					data-ng-submit="feed.validateFeed();">
+						<div class="form-group">
+							<input type="text" invalid-message="{{feed.strings.feed_required}}"
+							data-ng-model="feed.feed.value" 
+							class="form-control" id="feed" data-ng-maxlength=255 required
+							placeholder="{{feed.strings.feed}}">
+						</div>
+						<button type="submit" class="btn">{{feed.strings.post}}</button>
+                        <div  ng-repeat="feed in feeds" ng-class-odd="'odd'" ng-class-even="'even'">
+                        <div data-ng-include="'views/feedDetails.html'"></div>
+                        </div>
+					</form>
+				</div>
+			</div>
+			
+			<div class="profile" data-ng-show="menuCtrl.activeMenu === 'Profile'" data-ng-controller="profileController as profile">
+                <div data-ng-include="'views/profile.html'"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+	
